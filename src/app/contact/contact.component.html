@@ -1,0 +1,22 @@
+<nb-card>
+    <nb-card-header style="position: relative;">
+        <nb-badge *ngIf="showBestTag" text="Best Friend" status="danger" position="top right"></nb-badge>
+        <nb-icon icon="star"></nb-icon>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-toggle style="padding-right: 5px;" (checkedChange)="changedVipStatus($event)" checked="{{isVip}}">
+        </nb-toggle>
+        {{title}}
+        <a href="tel:{{phone}}">{{phone}}</a>
+        <label style="margin-left: 10px;">
+            Comment:
+            <input #comment (input)="commentChange(comment.value)" nbInput>
+        </label>
+    </nb-card-body>
+    <nb-card-footer>
+        <nb-tag-list>
+            <nb-tag *ngFor="let tag of tags" [text]="tag"></nb-tag>
+        </nb-tag-list>
+        <ngb-rating [rate]="rank" (rateChange)="changedRating($event)"></ngb-rating>
+    </nb-card-footer>
+</nb-card>
